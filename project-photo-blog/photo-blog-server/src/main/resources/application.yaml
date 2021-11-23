@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/db_photo_blog
+    username: postgres
+    driver-class-name: org.postgresql.Driver
+    password: 2021
+  liquibase:
+    change-log: classpath:/db/changelog/changelog-master.xml
+logging:
+    level:
+      liquibase: INFO
+
