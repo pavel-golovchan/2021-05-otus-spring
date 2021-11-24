@@ -1,4 +1,4 @@
-package ru.project.entity;
+package ru.project.photoblog.entity;
 
 import lombok.Data;
 
