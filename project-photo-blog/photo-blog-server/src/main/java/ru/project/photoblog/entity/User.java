@@ -19,7 +19,7 @@ public class User {
     private String email;
     private String password;
 
-    private List<Post> posts = new ArrayList<>();
+   // private List<Post> posts = new ArrayList<>();
 
     private LocalDateTime createdDate;
     @PrePersist

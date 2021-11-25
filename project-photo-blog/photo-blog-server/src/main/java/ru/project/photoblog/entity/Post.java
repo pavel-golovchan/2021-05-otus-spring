@@ -20,9 +20,9 @@ public class Post {
     private String location;
     private Integer likes;
 
-    private Set<String> likedUsers = new HashSet<>();
-    private User user;
-    private List<Comment> comments = new ArrayList<>();
+   // private Set<String> likedUsers = new HashSet<>();
+   // private User user;
+   // private List<Comment> comments = new ArrayList<>();
 
     private LocalDateTime createdDate;
     @PrePersist
