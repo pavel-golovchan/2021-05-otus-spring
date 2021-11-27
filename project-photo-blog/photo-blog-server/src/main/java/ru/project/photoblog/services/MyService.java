@@ -1,4 +1,4 @@
-package ru.project.photoblog.service;
+package ru.project.photoblog.services;
 
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;

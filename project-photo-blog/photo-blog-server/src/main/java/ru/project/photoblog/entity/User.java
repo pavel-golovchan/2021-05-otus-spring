@@ -20,12 +20,12 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
-    private String name;
-    @Column(unique = true, updatable = false)
-    private String username;
-    @Column(nullable = false)
-    private String lastname;
+    @Column(nullable = false, name = "first_name")
+    private String firstName;
+    @Column(unique = true, updatable = false, name = "user_name")
+    private String userName;
+    @Column(nullable = false, name = "last_name")
+    private String lastName;
     @Column(unique = true)
     private String email;
     @Column(length = 3000)
@@ -55,7 +55,7 @@ public class User implements UserDetails {
                 String password,
                 Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
-        this.username = username;
+        this.userName = username;
         this.email = email;
         this.password = password;
         this.authorities = authorities;
@@ -74,9 +74,6 @@ public class User implements UserDetails {
     /**
      * SECURITY
      */
-
-
-
     @Override
     public String getPassword() {
         return this.password;
@@ -84,7 +81,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.username;
+        return this.userName;
     }
 
     @Override
