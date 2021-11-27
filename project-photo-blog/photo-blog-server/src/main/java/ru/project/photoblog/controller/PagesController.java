@@ -1,4 +1,4 @@
-package ru.project.photoblog.rest;
+package ru.project.photoblog.controller;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;

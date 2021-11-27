@@ -1,4 +1,4 @@
-package ru.project.photoblog.rest;
+package ru.project.photoblog.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;

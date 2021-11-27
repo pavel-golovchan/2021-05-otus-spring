@@ -1,4 +1,4 @@
-package ru.project.photoblog.web;
+package ru.project.photoblog.controller;
 
 import ru.project.photoblog.dto.UserDTO;
 import ru.project.photoblog.entity.User;
