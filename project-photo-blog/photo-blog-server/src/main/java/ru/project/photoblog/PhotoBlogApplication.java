@@ -24,12 +24,7 @@ public class PhotoBlogApplication {
 				out.print( "PhotoBlog"  );
 			}
 		});
-	 */ app.setBanner(new Banner() {
-			@Override
-			public void printBanner(Environment environment, Class<?> sourceClass, PrintStream out) {
-
-			}
-		});
+	 */
 		app.run(args);
 	}
 
