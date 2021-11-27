@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: PhotoBlog
   datasource:
     url: jdbc:postgresql://localhost:5432/db_photo_blog
     username: postgres
@@ -9,4 +11,8 @@ spring:
 logging:
     level:
       liquibase: INFO
-
+info:
+  application:
+    name: ${spring.application.name}
+    version: v1
+    email: pavel-golovchan@yandex.ru
