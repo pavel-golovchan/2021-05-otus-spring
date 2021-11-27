@@ -28,8 +28,6 @@ public class User implements UserDetails {
     private String lastname;
     @Column(unique = true)
     private String email;
-    @Column(columnDefinition = "text")
-    private String bio;
     @Column(length = 3000)
     private String password;
 
