@@ -1,23 +1,38 @@
 package ru.project.photoblog.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Data
+/**
+ * Комментаарии к посту.
+ */
 @Entity
+@Data
 public class Comment {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long authorUserId;
-    private String caption;
-    private String location;
-    private Integer likes;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Post post;
+    @Column(nullable = false)
+    private String username;
+    @Column(nullable = false)
+    private Long userId;
+    @Column(columnDefinition = "text", nullable = false)
+    private String message;
+    @Column(updatable = false)
     private LocalDateTime createdDate;
 
+    public Comment() {
+    }
+
+    @PrePersist
+    protected void onCreate()
+    {
+        this.createdDate = LocalDateTime.now();
+    }
 }

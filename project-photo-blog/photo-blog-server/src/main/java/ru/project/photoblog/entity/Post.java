@@ -1,5 +1,6 @@
 package ru.project.photoblog.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -9,9 +10,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Data
+/**
+ * Пост.
+ */
 @Entity
+@Data
 public class Post {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,13 +25,22 @@ public class Post {
     private String location;
     private Integer likes;
 
-   // private Set<String> likedUsers = new HashSet<>();
-   // private User user;
-   // private List<Comment> comments = new ArrayList<>();
-
+    @Column
+    @ElementCollection(targetClass = String.class)
+    private Set<String> likedUsers = new HashSet<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "post", orphanRemoval = true)
+    private List<Comment> comments = new ArrayList<>();
+    @Column(updatable = false)
     private LocalDateTime createdDate;
+
+    public Post() {
+    }
+
     @PrePersist
-    protected void onCreate(){
+    protected void onCreate()
+    {
         this.createdDate = LocalDateTime.now();
     }
 }
