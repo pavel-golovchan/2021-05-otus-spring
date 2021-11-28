@@ -29,13 +29,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private JWTAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
-
+/*
     @Override
     public void configure(WebSecurity web) {
         //это отключает не только аутентификацию, но и любые средства защиты, такие как XSS
         web.ignoring().antMatchers("/**");
     }
-
+*/
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
@@ -54,38 +54,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(customUserDetailsService).passwordEncoder(bCryptPasswordEncoder());
     }
-/*
-    @Autowired
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("admin").password("admin").roles("ADMIN")
-                .and()
-                .withUser("user").password("user").roles("USER")
-                .and()
-                .withUser("manager").password("manager").roles("MANAGER", "USER");
-    }
- */
-
-    /*  //отключим безопасность на время отладки/разработки основного функционала
-        @Override
-        public void configure(HttpSecurity http) throws Exception {
-            http.csrf().disable()
-                    //.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                    //.and()
-                    .authorizeRequests().antMatchers("/public").permitAll()
-                    .and()
-                    .authorizeRequests().antMatchers("/authenticated", "/success").authenticated()
-                    .and()
-                    .authorizeRequests().antMatchers("/user").hasAnyRole( "ADMIN", "USER" )
-
-                    .and()
-                    .authorizeRequests().antMatchers("/admin").hasRole( "ADMIN" )
-                    .and()
-                    .formLogin()
-                    .and()
-                    .logout().logoutUrl("/logout");
-       }
-             */
 
     @Override
     @Bean(BeanIds.AUTHENTICATION_MANAGER)
