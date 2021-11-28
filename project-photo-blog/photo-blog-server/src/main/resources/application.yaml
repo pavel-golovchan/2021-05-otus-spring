@@ -1,3 +1,5 @@
+server:
+  port: 8888
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/db_photo_blog
@@ -17,9 +19,9 @@ logging:
         hibernate:
           type: trace
       liquibase: INFO
-management:
-  server:
-    port: 7777
+#management:
+#  server:
+#    port: 7777
 #  security:
 #    enabled: false
 #  endpoints:
