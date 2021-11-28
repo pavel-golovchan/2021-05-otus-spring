@@ -40,4 +40,19 @@ http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd">
         <comment>удаление таблицы photo</comment>
     </changeSet>
 
+    <changeSet  id="05-drop-table-pb_user_role"  author="pavel">
+        <preConditions  onFail="CONTINUE">
+            <tableExists tableName="pb_user_role"/>
+        </preConditions>
+        <dropTable  tableName="pb_user_role" />
+        <comment>удаление таблицы pb_user_role</comment>
+    </changeSet>
+    <changeSet  id="06-drop-table-post_liked_users"  author="pavel">
+        <preConditions  onFail="CONTINUE">
+            <tableExists tableName="post_liked_users"/>
+        </preConditions>
+        <dropTable  tableName="post_liked_users" />
+        <comment>удаление таблицы post_liked_users</comment>
+    </changeSet>
+
 </databaseChangeLog>

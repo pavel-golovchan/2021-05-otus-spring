@@ -13,4 +13,8 @@ http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd">
     <include file="changes/02-create-table-post.xml" relativeToChangelogFile="true"/>
     <include file="changes/03-create-table-comment.xml" relativeToChangelogFile="true"/>
     <include file="changes/04-create-table-photo.xml" relativeToChangelogFile="true"/>
+
+    <include file="changes/05-create-table-user_role.xml" relativeToChangelogFile="true"/>
+    <include file="changes/06-create-table-post_liked_users.xml" relativeToChangelogFile="true"/>
+
 </databaseChangeLog>
