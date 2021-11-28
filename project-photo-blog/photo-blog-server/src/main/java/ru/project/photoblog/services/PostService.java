@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.project.photoblog.dto.PostDTO;
+import ru.project.photoblog.entity.Photo;
 import ru.project.photoblog.entity.Post;
 import ru.project.photoblog.entity.User;
 import ru.project.photoblog.exceptions.PostNotFoundException;
@@ -64,7 +65,7 @@ public class PostService {
      * @param userName
      * @return
      */
-    public Post LikePost(Long postId, String userName) {
+    public Post likePost(Long postId, String userName) {
         Post post = postRepository.findById(postId)
                 .orElseThrow(() -> new PostNotFoundException("Post cannot be found"));
 
@@ -80,6 +81,13 @@ public class PostService {
             post.getLikedUsers().add(userName);
         }
         return postRepository.save(post);
+    }
+
+    public void deletePost(Long postId, Principal principal) {
+        Post post = getPostById(postId, principal);
+        Optional<Photo> photoModel = photoRepository.findByPostId(post.getId());
+        postRepository.delete(post);
+        photoModel.ifPresent(photoRepository::delete);
     }
 
     private User getUserByPrincipal(Principal principal) {
