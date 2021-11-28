@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Data
+@Table(name="pb_comment")
 public class Comment {
 
     @Id

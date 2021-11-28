@@ -10,6 +10,7 @@ import javax.persistence.*;
  */
 @Data
 @Entity
+@Table(name="pb_photo")
 public class Photo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +23,7 @@ public class Photo {
     private Long postId;
 
     @Lob
-    @Column(columnDefinition = "LONGBLOB")
+    @Column(columnDefinition = "BLOB")
     private byte[] fileBody;
 
     public Photo() {

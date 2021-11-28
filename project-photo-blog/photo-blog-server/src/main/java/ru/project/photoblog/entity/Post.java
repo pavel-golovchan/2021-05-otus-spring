@@ -15,6 +15,7 @@ import java.util.Set;
  */
 @Entity
 @Data
+@Table(name="pb_post")
 public class Post {
 
     @Id

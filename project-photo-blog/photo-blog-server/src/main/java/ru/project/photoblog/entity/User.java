@@ -15,6 +15,7 @@ import java.util.*;
  */
 @Entity
 @Data
+@Table(name="pb_user")
 public class User implements UserDetails {
 
     @Id
@@ -32,7 +33,7 @@ public class User implements UserDetails {
     private String password;
 
     @ElementCollection(targetClass = EnumRole.class)
-    @CollectionTable(name = "user_role",
+    @CollectionTable(name = "pb_user_role",
             joinColumns = @JoinColumn(name = "user_id"))
     private Set<EnumRole> roles = new HashSet<>();
 
