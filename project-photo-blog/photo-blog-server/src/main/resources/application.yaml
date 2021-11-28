@@ -6,19 +6,28 @@ spring:
     password: 2021
   liquibase:
     change-log: classpath:/db/changelog/changelog-master.xml
+  jpa:
+    hibernate:
+#      ddl-auto: update
+      show-sql: true
+      format_sql: true
 logging:
     level:
+      org:
+        hibernate:
+          type: trace
       liquibase: INFO
 management:
   server:
     port: 7777
-  security:
-    enabled: true
-  endpoints:
-    actuator:
-      enabled: true
-    web:
-      base-path: "/actuator"
-      exposure:
-        include: "*"
-    enabled-by-defaults: true
+#  security:
+#    enabled: false
+#  endpoints:
+#    actuator:
+#      enabled: true
+#    web:
+#      base-path: "/"
+#      base-path: "/actuator"
+#      exposure:
+#        include: "*"
+#    enabled-by-defaults: true
