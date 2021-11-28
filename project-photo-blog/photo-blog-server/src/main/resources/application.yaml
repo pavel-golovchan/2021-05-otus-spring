@@ -19,6 +19,7 @@ logging:
         hibernate:
           type: trace
       liquibase: INFO
+#Settings for Actuator
 #management:
 #  server:
 #    port: 7777
@@ -28,8 +29,8 @@ logging:
 #    actuator:
 #      enabled: true
 #    web:
-#      base-path: "/"
-#      base-path: "/actuator"
-#      exposure:
-#        include: "*"
-#    enabled-by-defaults: true
+##      base-path: "/"
+##      base-path: "/actuator"
+#       exposure:
+#         include: "*"
+##    enabled-by-defaults: true
