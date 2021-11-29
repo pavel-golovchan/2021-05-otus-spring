@@ -18,12 +18,13 @@ public class Photo {
     @Column(nullable = false)
     private String fileName;
     @JsonIgnore
+    @Column(nullable = true, name="author_user_id")
     private Long authorUserId;
     @JsonIgnore
     private Long postId;
 
     @Lob
-    @Column(columnDefinition = "BLOB")
+    @Column(columnDefinition = "LONGBLOB")
     private byte[] fileBody;
 
     public Photo() {

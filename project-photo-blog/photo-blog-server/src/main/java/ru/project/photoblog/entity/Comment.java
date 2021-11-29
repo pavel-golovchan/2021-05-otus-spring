@@ -21,7 +21,7 @@ public class Comment {
     private Post post;
     @Column(nullable = false)
     private String username;
-    @Column(nullable = false)
+    @Column(nullable = false, name="author_user_id")
     private Long userId;
     @Column(columnDefinition = "text", nullable = false)
     private String message;
