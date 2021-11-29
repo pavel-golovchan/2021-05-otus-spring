@@ -1,0 +1,53 @@
+<div class="register-page">
+  <h2>Регистрация</h2>
+  <p>Уже есть учетная запись?  <a routerLink="/login">Sign in</a></p>
+  <form [formGroup]="registerForm">
+    <div class="justify-content-center">
+      <mat-form-field appearance="outline">
+        <mat-label>Электронная@почта</mat-label>
+        <input matInput+
+               formControlName="email">
+      </mat-form-field>
+    </div>
+    <div class="justify-content-center">
+      <mat-form-field appearance="outline">
+        <mat-label>Имя на сайте (логин)</mat-label>
+        <input matInput
+               formControlName="username">
+      </mat-form-field>
+    </div>
+    <div class="justify-content-center">
+      <mat-form-field appearance="outline">
+        <mat-label>Имя</mat-label>
+        <input matInput
+               formControlName="firstname">
+      </mat-form-field>
+    </div>
+    <div class="justify-content-center">
+      <mat-form-field appearance="outline">
+        <mat-label>Фамилия</mat-label>
+        <input matInput
+               formControlName="lastname">
+      </mat-form-field>
+    </div>
+    <div class="justify-content-center">
+      <mat-form-field appearance="outline">
+        <mat-label>Пароль</mat-label>
+        <input type="password" matInput
+               formControlName="password">
+      </mat-form-field>
+    </div>
+    <div class="justify-content-center">
+      <mat-form-field appearance="outline">
+        <mat-label>Подтверждение пароля</mat-label>
+        <input type="password" matInput
+               formControlName="confirmPassword">
+      </mat-form-field>
+    </div>
+
+    <button style="width: 5rem" [disabled]="registerForm.invalid" (click)="submit()" mat-flat-button color="primary">
+      Зарегистрироваться
+    </button>
+
+  </form>
+</div>
