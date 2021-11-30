@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd
+http://www.liquibase.org/xml/ns/pro
+http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd">
+
+    <changeSet  id="01-drop-table-pb_user"  author="pavel">
+        <preConditions  onFail="CONTINUE">
+            <tableExists tableName="pb_user"/>
+        </preConditions>
+        <dropTable  tableName="pb_user" />
+        <comment>удаление таблицы user</comment>
+    </changeSet>
+
+    <changeSet  id="02-drop-table-pb_post"  author="pavel">
+        <preConditions  onFail="CONTINUE">
+            <tableExists tableName="pb_post"/>
+        </preConditions>
+        <dropTable  tableName="pb_post" />
+        <comment>удаление таблицы post</comment>
+    </changeSet>
+
+    <changeSet  id="03-drop-table-pb_comment"  author="pavel">
+        <preConditions  onFail="CONTINUE">
+                <tableExists tableName="pb_comment"/>
+        </preConditions>
+        <dropTable  tableName="pb_comment" />
+        <comment>удаление таблицы comment</comment>
+    </changeSet>
+
+    <changeSet  id="04-drop-table-pb_photo"  author="pavel">
+        <preConditions  onFail="CONTINUE">
+            <tableExists tableName="pb_photo"/>
+        </preConditions>
+        <dropTable  tableName="pb_photo" />
+        <comment>удаление таблицы photo</comment>
+    </changeSet>
+
+    <changeSet  id="05-drop-table-pb_user_role"  author="pavel">
+        <preConditions  onFail="CONTINUE">
+            <tableExists tableName="pb_user_role"/>
+        </preConditions>
+        <dropTable  tableName="pb_user_role" />
+        <comment>удаление таблицы pb_user_role</comment>
+    </changeSet>
+    <changeSet  id="06-drop-table-post_liked_users"  author="pavel">
+        <preConditions  onFail="CONTINUE">
+            <tableExists tableName="post_liked_users"/>
+        </preConditions>
+        <dropTable  tableName="post_liked_users" />
+        <comment>удаление таблицы post_liked_users</comment>
+    </changeSet>
+
+</databaseChangeLog>
