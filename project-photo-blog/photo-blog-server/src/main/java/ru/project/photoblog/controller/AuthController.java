@@ -1,5 +1,7 @@
 package ru.project.photoblog.controller;
 
+import ru.project.photoblog.entity.User;
+import ru.project.photoblog.mail.MailController;
 import ru.project.photoblog.payload.reponse.JWTTokenSuccessResponse;
 import ru.project.photoblog.payload.reponse.MessageResponse;
 import ru.project.photoblog.payload.request.LoginRequest;
@@ -36,6 +38,9 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private MailController mailController;
+
     @PostMapping("/signin")
     public ResponseEntity<Object> authenticateUser(@Valid @RequestBody LoginRequest loginRequest, BindingResult bindingResult) {
         ResponseEntity<Object> errors = responseErrorValidation.mapValidationService(bindingResult);
@@ -57,9 +62,13 @@ public class AuthController {
     public ResponseEntity<Object> registerUser(@Valid @RequestBody SignupRequest signupRequest, BindingResult bindingResult) {
         ResponseEntity<Object> errors = responseErrorValidation.mapValidationService(bindingResult);
         if (!ObjectUtils.isEmpty(errors)) return errors;
-
-        userService.createUser(signupRequest);
-        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+        User userSignUp = userService.createUser(signupRequest);
+        String addText = "Мы сохраним следующую информацию о вас: ";
+        addText =" Ник:"+ userSignUp.getUsername()
+                + " Имя:"+userSignUp.getFirstName()
+                + " Фамилия:"+userSignUp.getLastName();
+        String mailSendResultText = mailController.sendSimpleEmail(userSignUp.getEmail(), addText );
+        return ResponseEntity.ok(new MessageResponse("User registered successfully!" + mailSendResultText ));
     }
 
 }

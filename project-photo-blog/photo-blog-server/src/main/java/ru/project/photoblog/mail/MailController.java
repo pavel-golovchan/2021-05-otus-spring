@@ -19,19 +19,17 @@ public class MailController {
 
     @ResponseBody
     @RequestMapping("/sendSimpleEmail")
-    public String sendSimpleEmail(@RequestParam("param") String param) {
+    public String sendSimpleEmail(@RequestParam("email") String email, @RequestParam("text") String text) {
 
         // создать SimpleMailMessage
         SimpleMailMessage message = new SimpleMailMessage();
 
-        message.setTo(MailConstants.DEFAULT_RECEIVER_EMAIL);
+        message.setTo( email );
         message.setSubject("Уведомление о регистрации на сайте PhotoBlog");
-        message.setText("Добрый день. Регистрация прошла успешно.");
-        message.setText("param = " + param);
+        message.setText("Добрый день. Регистрация прошла успешно." + text );
         // отправить
         this.emailSender.send(message);
 
-        return "Письмо отправлено! с параметром: " + param;
+        return "Письмо отправлено! на адрес : " + email;
     }
-
 }
