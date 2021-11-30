@@ -9,16 +9,17 @@ import {UserPostsComponent} from './user/user-posts/user-posts.component';
 import {AddPostComponent} from './user/add-post/add-post.component';
 
 const routes: Routes = [
-/*  {path: 'login', component: LoginComponent},*/
   {path: 'register', component: RegisterComponent},
- /* {path: 'main', component: IndexComponent, canActivate: [AuthGuardService]},
+  {path: 'login', component: LoginComponent},
+
+  {path: 'main', component: IndexComponent, canActivate: [AuthGuardService]},
   {
     path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService], children: [
       {path: '', component: UserPostsComponent, canActivate: [AuthGuardService]},
       {path: 'add', component: AddPostComponent, canActivate: [AuthGuardService]}
     ]
   },
-  {path: '', redirectTo: 'main', pathMatch: 'full'}*/
+  {path: '', redirectTo: 'main', pathMatch: 'full'}
 ];
 
 @NgModule({
